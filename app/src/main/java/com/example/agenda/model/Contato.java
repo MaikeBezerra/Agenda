@@ -2,9 +2,16 @@ package com.example.agenda.model;
 
 public class Contato {
 
+    private String id;
     private String nome;
     private String telefone;
     private String endereco;
+
+    public Contato(String nome, String telefone, String endereco){
+        this.nome = nome;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
 
     public String getNome() {
         return nome;
@@ -28,5 +35,13 @@ public class Contato {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
