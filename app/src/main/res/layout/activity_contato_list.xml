@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fragContatoList"
-        android:name="com.example.agenda.ContatoListFragment"
+        android:name="com.example.agenda.ui.contato.ContatoListFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

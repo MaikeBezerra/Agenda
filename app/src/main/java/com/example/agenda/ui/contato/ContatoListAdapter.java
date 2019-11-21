@@ -1,4 +1,4 @@
-package com.example.agenda;
+package com.example.agenda.ui.contato;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.agenda.R;
 import com.example.agenda.model.Contato;
 
 import java.util.List;

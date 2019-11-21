@@ -7,8 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.agenda.fragment.ChatContatoFragment;
-import com.example.agenda.fragment.ChatFragment;
+import com.example.agenda.ui.chat.ChatFragment;
+import com.example.agenda.ui.contato.ContatoListFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {

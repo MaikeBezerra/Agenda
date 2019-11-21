@@ -1,4 +1,4 @@
-package com.example.agenda;
+package com.example.agenda.ui.contato;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.agenda.R;
 
 public class ContataoListViewHolder extends RecyclerView.ViewHolder {
 
