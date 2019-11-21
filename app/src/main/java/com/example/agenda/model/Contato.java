@@ -7,11 +7,21 @@ public class Contato {
     private String telefone;
     private String endereco;
 
+    public Contato(){}
+
     public Contato(String nome, String telefone, String endereco){
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
     }
+
+    public Contato(String id, String nome, String telefone, String endereco){
+        this.nome = nome;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.id = id;
+    }
+
 
     public String getNome() {
         return nome;

@@ -1,14 +1,15 @@
 package com.example.agenda.data;
 
 import com.example.agenda.model.Contato;
+import com.example.agenda.presenter.OnChangeContatoListener;
 
-import java.util.ArrayList;
+public interface ContatoDAO{
+    void addContato( Contato c);
+    void editContato( Contato c );
+    void deleteContato( int contatoId );
+    Contato getContato( int contatoId );
 
-public interface ContatoDAO {
-    public void addContato( Contato c);
-    public void editContato( Contato c );
-    public void deleteContato( int contatoId );
-    public Contato getContato( int contatoId );
+    void findAll();
 
-    public ArrayList<Contato> getListaContato();
+    void addObserver(OnChangeContatoListener observer);
 }
