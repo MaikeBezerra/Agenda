@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include layout="@layout/content_contato_list" />
-
     <fragment
         android:id="@+id/fragContatoList"
         android:name="com.example.agenda.ContatoListFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <include layout="@layout/content_contato_list" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addContato"

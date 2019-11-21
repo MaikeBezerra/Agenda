@@ -1,17 +1,15 @@
 package com.example.agenda;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
 
 import com.example.agenda.fragment.ChatContatoFragment;
 import com.example.agenda.fragment.ChatFragment;
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +22,9 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         viewPagerAdapter.addFragment(new ChatFragment(), "Chats");
-        viewPagerAdapter.addFragment(new ContatoListFragment(), "Contatos");
+        viewPagerAdapter.addFragment(new ChatContatoFragment(), "Contatos");
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
-
-    public void adicionarContato(View view){
-        Intent intent = new Intent(getApplicationContext(), ContatoActivity.class);
-        startActivity(intent);
-    }
-
-
 }

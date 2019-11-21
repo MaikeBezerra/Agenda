@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/imgContato"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/round_account_circle_black_36dp"
             android:backgroundTint="#2196F3"
             android:foreground="@drawable/round_account_circle_black_36dp"

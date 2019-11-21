@@ -21,18 +21,19 @@ public class ContatoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contato);
-        contatoDAO = new ContatoDAOFirebase();
+        contatoDAO = new ContatoDAOFirebase(getApplicationContext());
 
-        etNome = (EditText) findViewById(R.id.txtNome);
-        etTelefone = (EditText) findViewById(R.id.txtFone);
-        etEndereco = (EditText) findViewById(R.id.txtEndereco);
+        etNome = findViewById(R.id.txtNome);
+        etTelefone = findViewById(R.id.txtFone);
+        etEndereco = findViewById(R.id.txtEndereco);
     }
 
     public void adicionar(View view){
         Contato c = new Contato(etNome.getText().toString(), etTelefone.getText().toString(), etEndereco.getText().toString());
         contatoDAO.addContato(c);
-        Toast.makeText(this, "Contato adicionado", Toast.LENGTH_LONG).show();
     }
 
-    public void cancelar(View view){}
+    public void cancelar(View view){
+        finish();
+    }
 }
