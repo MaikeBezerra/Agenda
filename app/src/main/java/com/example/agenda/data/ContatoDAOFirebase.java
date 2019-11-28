@@ -26,6 +26,7 @@ public class ContatoDAOFirebase implements ContatoDAO {
 
     private List<Contato> contatos;
     private List<OnChangeContatoListener> observers;
+    private Contato isloged;
 
     public ContatoDAOFirebase(Context context) {
         this.databaseContato = FirebaseDatabase.getInstance().getReference("usuarios");
@@ -38,6 +39,7 @@ public class ContatoDAOFirebase implements ContatoDAO {
 
     @Override
     public void addContato(Contato contato) {
+
         firestore.collection("contatos")
                 .add(contato)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -55,6 +57,17 @@ public class ContatoDAOFirebase implements ContatoDAO {
 
     }
 
+    public void logarContato(String telefone){
+        firestore.collection("contatos")
+                .whereEqualTo("telefone", telefone)
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<Contato> contatos = queryDocumentSnapshots.toObjects(Contato.class);
+                setIsloged(contatos.get(0));
+            }
+        });
+    }
 
     @Override
     public void editContato(Contato c) {
@@ -68,6 +81,12 @@ public class ContatoDAOFirebase implements ContatoDAO {
 
     @Override
     public Contato getContato(int contatoId) {
+        return null;
+    }
+
+    @Override
+    public Contato getContatoByTelefone(String telefone){
+
         return null;
     }
 
@@ -101,6 +120,14 @@ public class ContatoDAOFirebase implements ContatoDAO {
         for (OnChangeContatoListener observer: observers) {
             observer.update(contatos);
         }
+    }
+
+    private Contato getIsloged(){
+        return isloged;
+    }
+
+    public void setIsloged(Contato contato){
+        this.isloged = contato;
     }
 
 }

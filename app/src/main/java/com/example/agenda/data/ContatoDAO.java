@@ -9,6 +9,8 @@ public interface ContatoDAO{
     void deleteContato( int contatoId );
     Contato getContato( int contatoId );
 
+    Contato getContatoByTelefone(String telefone);
+
     void findAll();
 
     void addObserver(OnChangeContatoListener observer);

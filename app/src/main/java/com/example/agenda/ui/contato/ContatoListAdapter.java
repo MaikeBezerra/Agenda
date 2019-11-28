@@ -1,6 +1,7 @@
 package com.example.agenda.ui.contato;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.agenda.MenssagensActivity;
 import com.example.agenda.R;
 import com.example.agenda.model.Contato;
 
@@ -33,8 +35,17 @@ public class ContatoListAdapter extends RecyclerView.Adapter<ContataoListViewHol
 
     @Override
     public void onBindViewHolder(@NonNull ContataoListViewHolder holder, int position) {
-        Contato contato = contatos.get(position);
+        final Contato contato = contatos.get(position);
         holder.setNomeContato(contato.getNome());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MenssagensActivity.class);
+                intent.putExtra("telefone", contato.getTelefone());
+                context.startActivity(intent);
+            }
+        });
     }
 
 
