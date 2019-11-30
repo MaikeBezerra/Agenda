@@ -5,6 +5,7 @@ public class Mensagem {
     private String sender;
     private String receiver;
     private String corpo;
+    private String nomeDestinatario;
 
     public Mensagem(String sender, String receiver, String corpo) {
         this.sender = sender;
@@ -37,5 +38,9 @@ public class Mensagem {
 
     public void setCorpo(String corpo) {
         this.corpo = corpo;
+    }
+
+    public String getNomeDestinatario() {
+        return this.nomeDestinatario;
     }
 }
