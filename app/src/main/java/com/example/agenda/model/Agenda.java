@@ -9,6 +9,10 @@ public class Agenda {
     public Agenda() {
     }
 
+    public Agenda(List<Contato> contatos){
+        this.contatos = contatos;
+    }
+
     public List<Contato> getContatos() {
         return contatos;
     }

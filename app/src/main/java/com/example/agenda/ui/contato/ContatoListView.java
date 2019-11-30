@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.agenda.R;
 import com.example.agenda.data.ContatoListFirebase;
+import com.example.agenda.mock.Telefones;
 import com.example.agenda.model.Contato;
 import com.example.agenda.presenter.OnContatoListEventListener;
 
@@ -31,7 +32,7 @@ public class ContatoListView implements OnContatoListEventListener {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-        db.find("97016706");
+        db.find(Telefones.MY_NUMBER);
     }
 
 //    public void readContatos(){

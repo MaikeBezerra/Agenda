@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.agenda.mock.Telefones;
 import com.example.agenda.model.Chat;
 import com.example.agenda.model.Mensagem;
 import com.example.agenda.ui.chat.ChatAdapter;
@@ -69,7 +70,7 @@ public class MensagensActivity extends AppCompatActivity {
                 String receiver = getIntent().getExtras().getString("telefone");
 
                 if(!msg.isEmpty()) {
-                    sendMesage("97016706", receiver, msg);
+                    sendMesage(Telefones.MY_NUMBER, receiver, msg);
                 } else {
                     Toast.makeText(getApplicationContext(), "You can't send empty message", Toast.LENGTH_SHORT).show();
                 }
@@ -87,8 +88,8 @@ public class MensagensActivity extends AppCompatActivity {
 
         firestore = FirebaseFirestore.getInstance();
 
-        final DocumentReference reference = firestore.collection("chats").document("97016706_" + receiver);
-        final DocumentReference refReverse = firestore.collection("chats").document(receiver + "_97016706" );
+        final DocumentReference reference = firestore.collection("chats").document(Telefones.MY_NUMBER + "_" + receiver);
+        final DocumentReference refReverse = firestore.collection("chats").document(receiver + "_" + Telefones.MY_NUMBER );
 
         reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -118,7 +119,7 @@ public class MensagensActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
 
         firestore.collection("chats")
-                .document("97016706_" + telefone)
+                .document(Telefones.MY_NUMBER + telefone)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
