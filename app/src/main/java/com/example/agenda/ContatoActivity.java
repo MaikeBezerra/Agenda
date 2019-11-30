@@ -5,10 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.agenda.data.ContatoDAO;
-import com.example.agenda.data.ContatoDAOFirebase;
+import com.example.agenda.data.ContatoFirebase;
 import com.example.agenda.model.Contato;
 
 public class ContatoActivity extends AppCompatActivity {
@@ -21,7 +20,7 @@ public class ContatoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contato);
-        contatoDAO = new ContatoDAOFirebase(getApplicationContext());
+        contatoDAO = new ContatoFirebase(getApplicationContext());
 
         etNome = findViewById(R.id.txtNome);
         etTelefone = findViewById(R.id.txtFone);
@@ -29,8 +28,7 @@ public class ContatoActivity extends AppCompatActivity {
     }
 
     public void adicionar(View view){
-        Contato c = new Contato(etNome.getText().toString(), etTelefone.getText().toString(), etEndereco.getText().toString());
-        contatoDAO.addContato(c);
+        contatoDAO.addContato(etNome.getText().toString(), etTelefone.getText().toString(), etEndereco.getText().toString());
     }
 
     public void cancelar(View view){

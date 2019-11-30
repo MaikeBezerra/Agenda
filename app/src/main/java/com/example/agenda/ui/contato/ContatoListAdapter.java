@@ -9,11 +9,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.agenda.MenssagensActivity;
+import com.example.agenda.MensagensActivity;
 import com.example.agenda.R;
 import com.example.agenda.model.Contato;
+import com.example.agenda.model.Mensagem;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
+import java.util.Map;
 
 public class ContatoListAdapter extends RecyclerView.Adapter<ContataoListViewHolder> {
 
@@ -41,7 +45,7 @@ public class ContatoListAdapter extends RecyclerView.Adapter<ContataoListViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, MenssagensActivity.class);
+                Intent intent = new Intent(context, MensagensActivity.class);
                 intent.putExtra("telefone", contato.getTelefone());
                 context.startActivity(intent);
             }

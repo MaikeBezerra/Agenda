@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e6e6e6"
-    tools:context=".MenssagensActivity">
+    tools:context=".MensagensActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar_layaut"

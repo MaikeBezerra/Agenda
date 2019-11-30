@@ -1,6 +1,7 @@
 package com.example.agenda.data;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,15 +13,21 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class ContatoDAOFirebase implements ContatoDAO {
+import static android.content.ContentValues.TAG;
 
-    private DatabaseReference databaseContato;
+public class ContatoFirebase implements ContatoDAO {
+
+    private static final String COLECAO = "contatos";
+
     private FirebaseFirestore firestore;
     private Context context;
 
@@ -28,8 +35,7 @@ public class ContatoDAOFirebase implements ContatoDAO {
     private List<OnChangeContatoListener> observers;
     private Contato isloged;
 
-    public ContatoDAOFirebase(Context context) {
-        this.databaseContato = FirebaseDatabase.getInstance().getReference("usuarios");
+    public ContatoFirebase(Context context) {
         this.firestore = FirebaseFirestore.getInstance();
         this.context = context;
 
@@ -38,22 +44,15 @@ public class ContatoDAOFirebase implements ContatoDAO {
     }
 
     @Override
-    public void addContato(Contato contato) {
+    public void addContato(String nome, String telefone, String endereco) {
+        Map<String, Object> contato = new HashMap<>();
+        contato.put("nome", nome);
+        contato.put("telefone", telefone);
+        contato.put("endereco", endereco);
 
-        firestore.collection("contatos")
-                .add(contato)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(context, "Contato criado!", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "Erro ao salvar contato!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        firestore.collection("agendas")
+                .document("97016706")
+                .update("contatos", FieldValue.arrayUnion(contato));
 
     }
 
@@ -71,7 +70,7 @@ public class ContatoDAOFirebase implements ContatoDAO {
 
     @Override
     public void editContato(Contato c) {
-        this.databaseContato.child(c.getId()).setValue(c);
+        //this.databaseContato.child(c.getId()).setValue(c);
     }
 
     @Override
@@ -92,7 +91,7 @@ public class ContatoDAOFirebase implements ContatoDAO {
 
     @Override
     public void findAll() {
-        firestore.collection("contatos")
+        firestore.collection(COLECAO)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -105,7 +104,7 @@ public class ContatoDAOFirebase implements ContatoDAO {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "Erro na listagem!", Toast.LENGTH_SHORT).show();
+                        Log.w(TAG, "Error while reading list of contatos ", e);
                     }
                 });
 

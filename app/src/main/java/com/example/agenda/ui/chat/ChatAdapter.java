@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.agenda.R;
-import com.example.agenda.model.Chat;
+import com.example.agenda.model.Mensagem;
 
 import java.util.List;
 
@@ -18,12 +18,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
     private static final int MSG_TYPE_LEFT = 0;
     private static final int MSG_TYPE_RIGHT = 1;
     private Context context;
-    private List<Chat> chats;
+    private List<Mensagem> mensagens;
 
-
-    public ChatAdapter(Context context, List<Chat> chats){
+    public ChatAdapter(Context context, List<Mensagem> mensages){
         this.context = context;
-        this.chats = chats;
+        this.mensagens = mensages;
     }
 
     @NonNull
@@ -41,19 +40,19 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
-        Chat chat = chats.get(position);
+        Mensagem mensagem = mensagens.get(position);
 
-        holder.setShowMesage(chat.getMessage());
+        holder.setShowMesage(mensagem.getCorpo());
     }
 
     @Override
     public int getItemCount() {
-        return chats.size();
+        return mensagens.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (chats.get(position).getSender().equals("97016706")){
+        if (mensagens.get(position).getSender().equals("97016706")){
             return MSG_TYPE_RIGHT;
         }
 
