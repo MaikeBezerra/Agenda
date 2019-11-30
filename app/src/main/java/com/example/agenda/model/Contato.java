@@ -2,7 +2,6 @@ package com.example.agenda.model;
 
 public class Contato {
 
-    private String id;
     private String nome;
     private String telefone;
     private String endereco;
@@ -14,14 +13,6 @@ public class Contato {
         this.telefone = telefone;
         this.endereco = endereco;
     }
-
-    public Contato(String id, String nome, String telefone, String endereco){
-        this.nome = nome;
-        this.telefone = telefone;
-        this.endereco = endereco;
-        this.id = id;
-    }
-
 
     public String getNome() {
         return nome;
@@ -47,11 +38,4 @@ public class Contato {
         this.endereco = endereco;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 }
