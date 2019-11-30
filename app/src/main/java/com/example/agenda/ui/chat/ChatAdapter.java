@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.agenda.R;
+import com.example.agenda.mock.Telefones;
 import com.example.agenda.model.Mensagem;
 
 import java.util.List;
@@ -52,7 +53,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if (mensagens.get(position).getSender().equals("97016706")){
+        if (mensagens.get(position).getSender().equals(Telefones.MY_NUMBER)){
             return MSG_TYPE_RIGHT;
         }
 

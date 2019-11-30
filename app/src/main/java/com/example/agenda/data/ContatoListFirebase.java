@@ -26,7 +26,10 @@ public class ContatoListFirebase {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         Agenda agenda = documentSnapshot.toObject(Agenda.class);
-                        eventListener.onSetList(agenda.getContatos());
+                        if(agenda != null){
+                            eventListener.onSetList(agenda.getContatos());
+                        }
+
                     }
                 });
     }
